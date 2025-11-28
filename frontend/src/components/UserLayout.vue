@@ -32,8 +32,19 @@ const isMobile = computed(() => mdAndDown.value)
 const drawer = ref(false)
 const user = ref({})
 const roles = [
-    //staff
+     //staff
     {title:'หน้าหลัก',to:'/Staff',role:'ฝ่ายบุคลากร'},
+    {title:'จัดการผู้รับการประเมิน',to:'/ManageEva',role:'ฝ่ายบุคลากร'},
+    {title:'จัดการกรรมการประเมิน',to:'/ManageCommit',role:'ฝ่ายบุคลากร'},
+    {title:'จัดการกรรมหัวข้อการประเมิน',to:'/Topic',role:'ฝ่ายบุคลากร'},
+    {title:'จัดการตัวชี้วัด',to:'/Indicate',role:'ฝ่ายบุคลากร'},
+    {title:'จัดการรอบการประเมิน',to:'/Round_eva',role:'ฝ่ายบุคลากร'},
+    {title:'จัดการแบบประเมิน',to:'/Eva',role:'ฝ่ายบุคลากร'},
+    {title:'รายงานผลการประเมินของผู้รับการประเมิน',to:'/Score_evaList',role:'ฝ่ายบุคลากร'},
+    {title:'ผลสรุปการประเมินของกรรมการ',to:'/Score_commitList',role:'ฝ่ายบุคลากร'},
+    {title:'สถานะการประเมินของผู้รับการประเมิน',to:'/StatusEva',role:'ฝ่ายบุคลากร'},
+    {title:'สถานะการประเมินของกรรมการประเมิน',to:'/StatusCommit',role:'ฝ่ายบุคลากร'},
+    {title:'แนบเอกสารหรือคู่มือการประเมิน',to:'/Document',role:'ฝ่ายบุคลากร'},
 
     //commit
     {title:'หน้าหลัก',to:'/Committee',role:'กรรมการประเมิน'},
