@@ -3,7 +3,7 @@ const db = require('../../db')
 const router = express.Router()
 
 // API สำหรับ GET ข้อมูล
-// router.get('/eva',async (req,res) => {
+// router.get('/',async (req,res) => {
 //     try{
 //         const [rows] = await db.query(``)
 //         res.json(rows)
@@ -16,7 +16,7 @@ const router = express.Router()
 // API สำหรับ GET ข้อมูล
 router.get('/',async (req,res) => {
     try{
-        const [rows] = await db.query(`select  * from tb_indicate,tb_topic where tb_indicate.id_topic=tb_topic.id_topic order by id_indicate desc `)
+        const [rows] = await db.query(`select * from tb_system order by id_sys desc`)
         res.json(rows)
     }catch(err){
         console.error('Error Get',err)
@@ -24,11 +24,11 @@ router.get('/',async (req,res) => {
     }
 })
 
-// API สำหรับ POST ข้อมูล
+// API สำหรับ Insert ข้อมูล
 router.post('/',async (req,res) => {
     try{
-        const {id_topic,name_indicate,detail_indicate,point_indicate,check_indicate} = req.body
-        const [rows] = await db.query(`insert into tb_indicate (id_topic,name_indicate,detail_indicate,point_indicate,check_indicate) values (?,?,?,?,?)`,[id_topic,name_indicate,detail_indicate,point_indicate,check_indicate])
+        const {day_open,day_out,round_sys,year_sys,status_sys} = req.body
+        const [rows] = await db.query(`insert into tb_system  (day_open,day_out,round_sys,year_sys,status_sys) values (?,?,?,?,?)`,[day_open,day_out,round_sys,year_sys,status_sys])
         res.json({rows,message:'Insert Success'})
     }catch(err){
         console.error('Error Insert',err)
@@ -37,11 +37,11 @@ router.post('/',async (req,res) => {
 })
 
 // API สำหรับ Update ข้อมูล
-router.put('/:id_indicate',async (req,res) => {
+router.put('/:id_sys',async (req,res) => {
     try{
-        const {id_indicate} = req.params
-        const {id_topic,name_indicate,detail_indicate,point_indicate,check_indicate} = req.body
-        const [rows] = await db.query(`update tb_indicate set id_topic=?,name_indicate=?,detail_indicate=?,point_indicate=?,check_indicate=? where id_indicate='${id_indicate}'`,[id_topic,name_indicate,detail_indicate,point_indicate,check_indicate])
+        const {id_sys} = req.params
+        const {day_open,day_out,round_sys,year_sys,status_sys} = req.body
+        const [rows] = await db.query(`update tb_system  set day_open=?,day_out=?,round_sys=?,year_sys=?,status_sys=? where id_sys='${id_sys}' `,[day_open,day_out,round_sys,year_sys,status_sys])
         res.json({rows,message:'Update Success'})
     }catch(err){
         console.error('Error Update',err)
@@ -50,10 +50,10 @@ router.put('/:id_indicate',async (req,res) => {
 })
 
 // API สำหรับ Delete ข้อมูล
-router.delete('/:id_indicate',async (req,res) => {
+router.delete('/:id_sys',async (req,res) => {
     try{
-        const {id_indicate} = req.params
-        const [rows] = await db.query(`delete from tb_indicate where id_indicate='${id_indicate}'`)
+        const {id_sys} = req.params
+        const [rows] = await db.query(`delte from tb_system where id_sys='${id_sys}' `)
         res.json({rows,message:'Delete Success'})
     }catch(err){
         console.error('Error Delete',err)

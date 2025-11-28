@@ -1,8 +1,42 @@
-import LoginForm from '@/LoginForm.vue'
 import { createRouter, createWebHistory } from 'vue-router'
-
 import RegisterForm from '@/RegisterForm.vue'
+import LoginForm from '@/LoginForm.vue'
 import UserLayout from '@/components/UserLayout.vue'
+
+//commit
+import Committee from '@/views/Committee/index.vue'
+// import Show_score from '@/views/Committee/Show_score.vue'
+// import Show_eva from '@/views/Committee/Show_eva.vue'
+// import Save_score from '@/views/Committee/Save_score.vue'
+
+//eva
+import Evaluatee from '@/views/Evaluatee/index.vue'
+import Edit_eva from '@/views/Evaluatee/Edit_eva.vue'
+
+import Selfeva from '@/views/Evaluatee/Selfeva.vue'
+// import Check_score from '@/views/Evaluatee/Check_score.vue'
+// import Check_eva from '@/views/Evaluatee/Check_eva.vue'
+// import Check_commit from '@/views/Evaluatee/Check_commit.vue'
+
+//staff
+import Index from '@/views/Staff/index.vue'
+import ManageEva from '@/views/Staff/ManageEva.vue'
+import ManageCommit from '@/views/Staff/ManageCommit.vue'
+import Topic from '@/views/Staff/Topic.vue'
+
+import Indicate from '@/views/Staff/Indicate.vue'
+
+import Round_eva from '@/views/Staff/Round_eva.vue'
+import Eva from '@/views/Staff/Eva.vue'
+import Eva_commit from '@/views/Staff/Eva_commit.vue'
+import Score_evaList from '@/views/Staff/Score_evaList.vue'
+import Score_commitList from '@/views/Staff/Score_commitList.vue'
+import StatusEva from '@/views/Staff/StatusEva.vue'
+import StatusCommit from '@/views/Staff/StatusCommit.vue'
+import Status2 from '@/views/Staff/Status2.vue'
+import Document from '@/views/Staff/Document.vue'
+
+
 
 
 const router = createRouter({
@@ -19,23 +53,136 @@ const router = createRouter({
       component: LoginForm,
     },
     {
-      path: '/login',
-      name: 'LoginForm',
-      component: LoginForm,
-    },
-    {
       path: '/',
       redirect: '/login',
     },
+
+    //Staff
     {
       path: '/Staff',
       component: UserLayout,
-      children: [
+      children:[
         {
           path: '/Staff',
-          name: 'Staff Dashboard',
-          component: LoginForm,
+          name: 'Staff',
+          component: Index,
         },
+        {
+          path: '/ManageEva',
+          name: 'ManageEva',
+          component: ManageEva,
+        },
+        {
+          path: '/ManageCommit',
+          name: 'ManageCommit',
+          component: ManageCommit,
+        },
+        {
+          path: '/Topic',
+          name: 'Topic',
+          component: Topic,
+        },
+        {
+          path: '/Indicate',
+          name: 'Indicate',
+          component: Indicate,
+        },
+        {
+          path: '/Round_eva',
+          name: 'Round_eva',
+          component: Round_eva,
+        },
+        {
+          path: '/Eva',
+          name: 'Eva',
+          component: Eva,
+        },
+        {
+          path: '/Eva_commit/:id_eva',
+          name: 'Eva_commit',
+          component: Eva_commit,
+        },
+        {
+          path: '/Score_evaList',
+          name: 'Score_evaList',
+          component: Score_evaList,
+        },
+        {
+          path: '/Score_commitList',
+          name: 'Score_commitList',
+          component: Score_commitList,
+        },
+        {
+          path: '/StatusEva',
+          name: 'StatusEva',
+          component: StatusEva,
+        },
+        {
+          path: '/StatusCommit',
+          name: 'StatusCommit',
+          component: StatusCommit,
+        },
+        {
+          path: '/Status2/:id_eva',
+          name: 'Status2',
+          component: Status2,
+        },
+        {
+          path: '/Document',
+          name: 'Document',
+          component: Document,
+        },
+      ]
+    },
+
+    // Commit
+    {
+      path: '/Committee',
+      component: UserLayout,
+      children:[
+        {
+          path: '/Committee',
+          name: 'Committee',
+          component: Committee,
+        },
+      ]
+    },
+    
+    //eva
+    {
+      path: '/Evaluatee',
+      component: UserLayout,
+      children:[
+        {
+          path: '/Evaluatee',
+          name: 'Evaluatee',
+          component: Evaluatee,
+        },
+        {
+          path: '/Edit_eva',
+          name: 'Edit_eva',
+          component: Edit_eva,
+        },
+        {
+          path: '/Selfeva',
+          name: 'Selfeva',
+          component: Selfeva,
+        },
+        // {
+        //   path: '/Check_score',
+        //   name: 'Check_score',
+        //   component: Check_score,
+        // },
+        // {
+        //   path: '/Check_eva',
+        //   name: 'Check_eva',
+        //   component: Check_eva,
+        // },
+        // {
+        //   path: '/Check_commit',
+        //   name: 'Check_commit',
+        //   component: Check_commit,
+        // },
       ]
     },
   ],
