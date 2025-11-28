@@ -8,4 +8,4 @@ const pool = mysql.createPool({
     timezone:'+07:00',
 })
 
-module.export=pool.promise()
+module.exports=pool.promise()
