@@ -1,10 +1,6 @@
 import './assets/main.css'
 import 'vuetify/styles'
-<<<<<<< HEAD
-import '@mdi/font/css/materialdesigniocs.css'
-=======
 import '@mdi/font/css/materialdesignicons.css'
->>>>>>> 577af4bf2bd578c942745edc7b947eb02decefb2
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
