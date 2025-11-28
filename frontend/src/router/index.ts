@@ -2,6 +2,10 @@ import LoginForm from '@/LoginForm.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 import RegisterForm from '@/RegisterForm.vue'
+import UserLayout from '@/components/UserLayout.vue'
+
+//eva
+import Evaluatee from '@/views/Evaluatee/index.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -24,6 +28,19 @@ const router = createRouter({
     {
       path: '/',
       redirect: '/login',
+    },
+
+    //eva
+    {
+      path: '/Evaluatee',
+      component: UserLayout,
+      children:[
+        {
+          path: '/Evaluatee',
+          name: 'Evaluatee',
+          component: Evaluatee,
+        },
+      ]
     },
   ],
 })
