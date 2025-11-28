@@ -1,11 +1,16 @@
-import LoginForm from '@/LoginForm.vue'
 import { createRouter, createWebHistory } from 'vue-router'
+import LoginForm from '@/LoginForm.vue'
 
 import RegisterForm from '@/RegisterForm.vue'
 import UserLayout from '@/components/UserLayout.vue'
 
+//commit
+import Committee from '@/views/Committee/index.vue'
+
 //eva
 import Evaluatee from '@/views/Evaluatee/index.vue'
+import Edit_eva from '@/views/Evaluatee/Edit_eva.vue'
+import Selfeva from '@/views/Evaluatee/Selfeva.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,13 +26,21 @@ const router = createRouter({
       component: LoginForm,
     },
     {
-      path: '/login',
-      name: 'LoginForm',
-      component: LoginForm,
+      path: '',
+      redirect: 'login',
     },
+
+    //commit
     {
-      path: '/',
-      redirect: '/login',
+      path: '/Committee',
+      component: UserLayout,
+      children:[
+        {
+          path: '/Committee',
+          name: 'Committee',
+          component: Committee,
+        },
+      ]
     },
 
     //eva
@@ -39,6 +52,16 @@ const router = createRouter({
           path: '/Evaluatee',
           name: 'Evaluatee',
           component: Evaluatee,
+        },
+        {
+          path: '/Edit_eva',
+          name: 'Edit_eva',
+          component: Edit_eva,
+        },
+        {
+          path: '/Selfeva',
+          name: 'Selfeva',
+          component: Selfeva,
         },
       ]
     },

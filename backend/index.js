@@ -20,4 +20,11 @@ app.use('/api/auth',auth)
 const profile = require('./routes/profile')
 app.use('/api/profile',profile)
 
+//eva
+const me = require('./routes/Eva/me')
+app.use('/api/Eva/me',me)
+
+const selfeva = require('./routes/Eva/selfeva')
+app.use('/api/Eva/selfeva',selfeva)
+
 app.listen(3001 , () => console.log('Server Running On Port 3001'))
