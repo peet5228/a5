@@ -1,16 +1,14 @@
 import LoginForm from '@/LoginForm.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
-<<<<<<< HEAD
 import RegisterForm from '@/RegisterForm.vue'
-=======
->>>>>>> 577af4bf2bd578c942745edc7b947eb02decefb2
+import UserLayout from '@/components/UserLayout.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-<<<<<<< HEAD
       path: '/regis',
       name: 'RegisterForm',
       component: RegisterForm,
@@ -21,15 +19,24 @@ const router = createRouter({
       component: LoginForm,
     },
     {
-=======
       path: '/login',
       name: 'LoginForm',
       component: LoginForm,
     },
     {
->>>>>>> 577af4bf2bd578c942745edc7b947eb02decefb2
       path: '/',
       redirect: '/login',
+    },
+    {
+      path: '/Staff',
+      component: UserLayout,
+      children: [
+        {
+          path: '/Staff',
+          name: 'Staff Dashboard',
+          component: LoginForm,
+        },
+      ]
     },
   ],
 })

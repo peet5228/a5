@@ -2,6 +2,7 @@ const express = require('express')
 const db = require('../../db')
 const router = express.Router()
 
+// ========= DEMO =========
 // API สำหรับ GET ข้อมูล ========================================================================
 // router.get('/',async (req,res) => {
 //     try{
@@ -12,11 +13,25 @@ const router = express.Router()
 //         res.status(500).json({message:'Error Get'})
 //     }
 // })
+// ========= DEMO =========
 
 // API สำหรับ GET ข้อมูล ========================================================================
 router.get('/',async (req,res) => {
     try{
         const [rows] = await db.query(`select * from tb_topic order by id_topic desc`)
+        res.json(rows)
+    }catch(err){
+        console.error('Error Get',err)
+        res.status(500).json({message:'Error Get'})
+    }
+})
+
+// API สำหรับ GET ข้อมูล where params ========================================================================
+router.get('/:id_topic',async (req,res) => {
+    try{
+        const {id_topic} = req.params
+        const [rows] = await db.query(`select * from tb_topic where id_topic='${id_topic}' order by id_topic desc`)
+        if(rows.length === 0) return res.status(403).json({message:'ไม่พบข้อมูลจากไอดีนี้'})
         res.json(rows)
     }catch(err){
         console.error('Error Get',err)
@@ -49,7 +64,7 @@ router.put('/:id_topic',async (req,res) => {
     }
 })
 
-// API สำหรับ Delete ข้อมูล
+// API สำหรับ Delete ข้อมูล ========================================================================
 router.delete('/:id_topic',async (req,res) => {
     try{
         const {id_topic} = req.params
