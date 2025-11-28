@@ -1,4 +1,6 @@
+import LoginForm from '@/LoginForm.vue'
 import { createRouter, createWebHistory } from 'vue-router'
+
 import RegisterForm from '@/RegisterForm.vue'
 
 const router = createRouter({
@@ -8,6 +10,15 @@ const router = createRouter({
       path: '/regis',
       name: 'RegisterForm',
       component: RegisterForm,
+    },
+    {
+      path: '/login',
+      name: 'LoginForm',
+      component: LoginForm,
+    },
+    {
+      path: '/',
+      redirect: '/login',
     },
   ],
 })
